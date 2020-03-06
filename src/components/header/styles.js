@@ -21,5 +21,6 @@ export const Content = styled.div`
     aside {
         display: flex;
         align-items: center;
+        margin-right: 35px;
     }
 `

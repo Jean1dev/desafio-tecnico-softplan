@@ -82,7 +82,7 @@ export default function HeroCard() {
           <AssignmentIcon onClick={() => history.push('hero-details/912874719')} />
         </IconButton>
         <IconButton aria-label="share">
-          <EditIcon />
+          <EditIcon  onClick={() => history.push('edit-hero/123456')}/>
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
