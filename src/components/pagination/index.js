@@ -3,11 +3,14 @@ import Pagination from 'react-bootstrap/Pagination'
 
 export default function PaginationComponet({ rowsPerPage, totalRows, pageActive, onPageChange }) {
     const pageNumber = []
+    const maxButtons = 10
 
-    for (let i = 1; i < Math.ceil(totalRows / rowsPerPage); i++) {
-        pageNumber.push(i)
+    for (let i = pageActive; i < Math.ceil(totalRows / rowsPerPage); i++) {
+        if (i <= pageActive + maxButtons) {
+            pageNumber.push(i)
+        }
     }
-    
+
     if (pageNumber.length < 2) {
         return (
             <>
@@ -22,6 +25,7 @@ export default function PaginationComponet({ rowsPerPage, totalRows, pageActive,
 
             {pageNumber.map(number => (
                 <Pagination.Item 
+                    key={number}
                     onClick={() => onPageChange(number)}
                     active={ number === pageActive }
                     >{number}</Pagination.Item>

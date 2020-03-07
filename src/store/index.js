@@ -1,10 +1,18 @@
 import { persistStore } from 'redux-persist'
-import createStore from './createStore'
-import persistedReducers from './persistReducer'
-import rootReducer from './modules/rootReducer'
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import reducers from './reducers'
 
-const middlewares = []
-const store = createStore(persistedReducers(rootReducer), middlewares)
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const middlewares = [ thunk ]
+
+const store = createStore(
+    reducers(),
+    composeEnhancers(
+        applyMiddleware(...middlewares)
+    )
+)
+
 const persistor = persistStore(store)
 
 export { store, persistor }

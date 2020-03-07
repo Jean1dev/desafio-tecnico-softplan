@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Input = styled.input`
   width: 300px;
-  height: 25px;
+  height: 35px;
   margin-left: 20px;
   border: 1px #ddd solid;
   display: inline-flex;
@@ -15,5 +15,5 @@ export const ButtonSearch = styled.button`
   font-size: 14px;
   color: #5a5a5a;
   font-weight: 100;
-  height: 23px;
+  height: 33px;
 `

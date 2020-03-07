@@ -1,19 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
 import Paper from '@material-ui/core/Paper'
-import Stepper from '@material-ui/core/Stepper'
-import Step from '@material-ui/core/Step'
-import StepLabel from '@material-ui/core/StepLabel'
 import Button from '@material-ui/core/Button'
-import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
+import useForm from '../../hooks/useForm'
+import Avatar from '@material-ui/core/Avatar'
+import AddAPhotoIcon from '@material-ui/icons/AddAPhoto'
 
 const useStyles = makeStyles(theme => ({
     layout: {
@@ -44,10 +38,27 @@ const useStyles = makeStyles(theme => ({
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1),
     },
+    avatar: {
+        height: '150px',
+        width: '150px'
+    },
+    avatarContainer: {
+        marginTop: '10px',
+        marginBottom: '30px',
+        margin: '0 auto',
+        width: '35%'
+    }
 }))
 
-export default function EditHero() {
+export default function EditHero({ location }) {
     const classes = useStyles()
+    const { state: hero } = location
+    const [{ values }, handleChange, handleSubmit] = useForm()
+    const [foto, setFoto] = useState("https://avatarfiles.alphacoders.com/153/153179.png")
+
+    function submitForm() {
+
+    }
 
     return (
         <>
@@ -57,13 +68,18 @@ export default function EditHero() {
                         Editar personagem
                     </Typography>
 
+                    <div className={classes.avatarContainer}> 
+                        <Avatar className={classes.avatar} alt={hero.nome} src={foto} />
+                        <AddAPhotoIcon/>
+                    </div>
+                    
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 required
-                                id="firstName"
-                                name="firstName"
-                                label="First name"
+                                id="nome"
+                                name="nome"
+                                label="nome"
                                 fullWidth
                                 autoComplete="fname"
                             />
@@ -71,9 +87,9 @@ export default function EditHero() {
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 required
-                                id="lastName"
-                                name="lastName"
-                                label="Last name"
+                                id="sobrenome"
+                                name="sobrenome"
+                                label="Sobrenome"
                                 fullWidth
                                 autoComplete="lname"
                             />
@@ -81,53 +97,10 @@ export default function EditHero() {
                         <Grid item xs={12}>
                             <TextField
                                 required
-                                id="address1"
-                                name="address1"
-                                label="Address line 1"
+                                id="descricao"
+                                name="descricao"
+                                label="Descricao"
                                 fullWidth
-                                autoComplete="billing address-line1"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                id="address2"
-                                name="address2"
-                                label="Address line 2"
-                                fullWidth
-                                autoComplete="billing address-line2"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="city"
-                                name="city"
-                                label="City"
-                                fullWidth
-                                autoComplete="billing address-level2"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField id="state" name="state" label="State/Province/Region" fullWidth />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="zip"
-                                name="zip"
-                                label="Zip / Postal code"
-                                fullWidth
-                                autoComplete="billing postal-code"
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="country"
-                                name="country"
-                                label="Country"
-                                fullWidth
-                                autoComplete="billing country"
                             />
                         </Grid>
                     </Grid>

@@ -23,7 +23,7 @@ export default function header() {
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => history.push('my-heros')}>Meus herois</Dropdown.Item>
+                            <Dropdown.Item onClick={() => history.replace('my-heros')}>Meus herois</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     <NotificationsNoneIcon />

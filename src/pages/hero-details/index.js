@@ -30,21 +30,22 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function HeroDetails({ match }) {
+export default function HeroDetails({ location }) {
     const classes = useStyles()
-    const id = match.params[0]
+    const { state: hero } = location
+    
 
     return (
         <Container>
             <Paper className={classes.paper}>
                 <div className={classes.wallpaper}>
-                    <Avatar className={classes.avatar} alt="Cindy Baker" src="https://avatarfiles.alphacoders.com/153/153179.png" />
+                    <Avatar className={classes.avatar} alt={hero.nome} src="https://avatarfiles.alphacoders.com/153/153179.png" />
                     
                 </div>
             </Paper>
             <div className={classes.spacer}></div>
             <Paper className={classes.paper}>
-                <ListSeries />
+                <ListSeries hero={hero} />
             </Paper>
         </Container>
     );
