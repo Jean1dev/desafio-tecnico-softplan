@@ -1,11 +1,11 @@
-function saveHero(hero) {
+export function saveHero(hero) {
     return {
         type: '@hero/SAVE_HERO',
         payload: hero
     }
 }
 
-function removeHero(hero) {
+export function removeHero(hero) {
     return {
         type: '@hero/DELETE_HERO',
         payload: hero.id

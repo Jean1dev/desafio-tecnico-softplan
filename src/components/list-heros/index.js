@@ -69,12 +69,11 @@ export default function ListHeros() {
             const params = getParams()
             const { data } = await api.get('characters', { params })
             const results = data.data.results.map(createData)
-            // rows = results // setRows(results)
             setTotalRows(data.data.total)
-            console.log(`fecth`)
             setRows(results)
             setLoading(false)
         }
+        
         setLoading(true)
         fetch()
     }, [filter, filterName])
@@ -99,7 +98,7 @@ export default function ListHeros() {
                 {!loading && <>
                     <Grid container spacing={1}>
                         <SearchBar />
-                        <Grid container item xs={12} spacing={3}>
+                        <Grid data-testid="grid" container item xs={12} spacing={3}>
                             {rows.map(hero => (
                                 <CardHero key={hero.id} hero={hero} />
                             ))}

@@ -11,12 +11,12 @@ export default function header() {
         <Container>
             <Content>
                 <nav>
-                    <Link to="/">
-                        <img src="https://www.userlogos.org/files/logos/danger83/marvel.png" alt="Icone Massa"></img>
-                    </Link>
+                    {/* <Link to="/"> */}
+                        <img data-testid="img" src="https://www.userlogos.org/files/logos/danger83/marvel.png" alt="Icone Massa"></img>
+                    {/* </Link> */}
                 </nav>
 
-                <aside>
+                <aside data-testid="side">
                     <Dropdown>
                         <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
                             <MoreHorizIcon/>

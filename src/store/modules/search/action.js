@@ -1,4 +1,4 @@
-function dispatchSearch(filter) {
+export function dispatchSearch(filter) {
     return {
         type: '@search/DISPATCH_SEARCH',
         payload: filter

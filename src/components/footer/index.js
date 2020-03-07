@@ -4,7 +4,7 @@ import { Container } from './styles'
 
 export default function Footer() {
     return (
-        <Container>
+        <Container data-testid="copyrigth">
             <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}{ new Date().getFullYear() }
           

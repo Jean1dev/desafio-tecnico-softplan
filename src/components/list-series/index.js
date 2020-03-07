@@ -38,7 +38,7 @@ export default function ListSeries({ hero }) {
                 </TableHead>
                 <TableBody>
                     {rows.map(row => (
-                        <TableRow key={row.id}>
+                        <TableRow data-testid="table" key={row.id}>
                             <TableCell>{row.title}</TableCell>
                             <TableCell>{row.description}</TableCell>
                             <TableCell>{row.startYear}</TableCell>

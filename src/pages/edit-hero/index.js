@@ -60,7 +60,7 @@ export default function EditHero({ location }) {
     const dispatch = useDispatch()
     const { state: hero } = location
     const [{ values }, handleChange, handleSubmit] = useForm()
-    const [foto, setFoto] = useState("https://avatarfiles.alphacoders.com/153/153179.png")
+    const [foto] = useState("https://avatarfiles.alphacoders.com/153/153179.png")
 
     function submitForm() {
         dispatch(_saveHero(values))
@@ -76,13 +76,14 @@ export default function EditHero({ location }) {
                     </Typography>
 
                     <div className={classes.avatarContainer}>
-                        <Avatar className={classes.avatar} alt={hero.nome} src={foto} />
+                        <Avatar className={classes.avatar} alt={hero} src={foto} />
                         <AddAPhotoIcon />
                     </div>
-                    <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
+                    <form data-testid="form" className={classes.form} onSubmit={handleSubmit(submitForm)}>
                         <Grid container spacing={3}>
                             <Grid item xs={12} sm={6}>
                                 <TextField
+                                    data-testid="txtNome"
                                     required
                                     id="nome"
                                     name="nome"
@@ -95,6 +96,7 @@ export default function EditHero({ location }) {
                             <Grid item xs={12} sm={6}>
                                 <TextField
                                     required
+                                    data-testid="txtSobrenome"
                                     id="sobrenome"
                                     name="sobrenome"
                                     label="Sobrenome"
@@ -106,6 +108,7 @@ export default function EditHero({ location }) {
                             <Grid item xs={12}>
                                 <TextField
                                     required
+                                    data-testid="txtDescricao"
                                     id="descricao"
                                     name="descricao"
                                     label="Descricao"
@@ -116,6 +119,7 @@ export default function EditHero({ location }) {
                         </Grid>
                         <div className={classes.buttons}>
                             <Button
+                                data-testid="button"
                                 type="submit"
                                 variant="contained"
                                 color="primary"

@@ -30,9 +30,9 @@ export default function MyHeros() {
     return (
         <Container>
             <Paper className={classes.paper}>
-                <List className={classes.list}>
+                <List data-testid="list" className={classes.list}>
                     {myHeros.map(hero => (
-                        <ListItem key={hero.id} hero={hero}/>
+                        <ListItem data-testid="item-list" key={hero.id} hero={hero}/>
                     ))}
                 </List>
             </Paper>
