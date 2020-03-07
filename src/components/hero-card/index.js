@@ -78,11 +78,11 @@ export default function HeroCard() {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <AssignmentIcon onClick={() => history.push('hero-details/912874719')} />
+        <IconButton aria-label="add to favorites" onClick={() => history.push('hero-details/912874719')}>
+          <AssignmentIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <EditIcon  onClick={() => history.push('edit-hero/123456')}/>
+        <IconButton aria-label="share" onClick={() => history.push('edit-hero/123456')}>
+          <EditIcon/>
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {

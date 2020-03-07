@@ -7,6 +7,7 @@ import CardHero from '../hero-card'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import SearchBar from '../search-bar'
 import Pagination from '../pagination'
+import api, { getCredentials } from '../../services/api'
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -24,20 +25,37 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+function createData(data) {
+    return {
+        id: data.id,
+        nome: data.name,
+        descricao: data.description,
+        img: data.thumbnail.path
+    }
+}
+
 export default function ListHeros() {
     const classes = useStyles()
     const [loading, setLoading] = useState(true)
-    const [rows, setRows] = useState([])
     const [currentPage, setCurrentPage] = useState(1)
     const [rowsPerPage] = useState(10)
+    const [items, setItems] = useState([])
     const [filter, setFilter] = useState({
         limit: rowsPerPage
     })
 
     useEffect(() => {
-        setTimeout(() => {
+        async function fetch() {
+            let { params } = getCredentials()
+            params.limit = filter.limit
+            const { data } = await api.get('characters', { params })
+            const results = data.data.results.map(createData)
+            setItems(...results)
             setLoading(false)
-        }, 2)
+            console.log(items)
+        }
+
+        fetch()
     }, [])
 
     function onPageChanged() {
@@ -72,7 +90,7 @@ export default function ListHeros() {
                             onPageChange={onPageChanged}
                             pageActive={currentPage}
                             rowsPerPage={rowsPerPage}
-                            totalRows={rows.length}></Pagination>
+                            totalRows={items.length}></Pagination>
                     </div>
                 </>}
             </Paper>
