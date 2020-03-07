@@ -8,7 +8,12 @@ import TextField from '@material-ui/core/TextField'
 import useForm from '../../hooks/useForm'
 import Avatar from '@material-ui/core/Avatar'
 import AddAPhotoIcon from '@material-ui/icons/AddAPhoto'
+import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+import { _saveHero } from '../../store/modules/heros/actions'
+import 'react-toastify/dist/ReactToastify.css'
 
+toast.configure()
 const useStyles = makeStyles(theme => ({
     layout: {
         width: 'auto',
@@ -52,12 +57,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function EditHero({ location }) {
     const classes = useStyles()
+    const dispatch = useDispatch()
     const { state: hero } = location
     const [{ values }, handleChange, handleSubmit] = useForm()
     const [foto, setFoto] = useState("https://avatarfiles.alphacoders.com/153/153179.png")
 
     function submitForm() {
-
+        dispatch(_saveHero(values))
+        toast.success('Personagem alterado')
     }
 
     return (
@@ -68,51 +75,56 @@ export default function EditHero({ location }) {
                         Editar personagem
                     </Typography>
 
-                    <div className={classes.avatarContainer}> 
+                    <div className={classes.avatarContainer}>
                         <Avatar className={classes.avatar} alt={hero.nome} src={foto} />
-                        <AddAPhotoIcon/>
+                        <AddAPhotoIcon />
                     </div>
-                    
-                    <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="nome"
-                                name="nome"
-                                label="nome"
-                                fullWidth
-                                autoComplete="fname"
-                            />
+                    <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
+                        <Grid container spacing={3}>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    id="nome"
+                                    name="nome"
+                                    label="nome"
+                                    fullWidth
+                                    autoComplete="fname"
+                                    onChange={handleChange}
+                                />
+                            </Grid>
+                            <Grid item xs={12} sm={6}>
+                                <TextField
+                                    required
+                                    id="sobrenome"
+                                    name="sobrenome"
+                                    label="Sobrenome"
+                                    fullWidth
+                                    autoComplete="lname"
+                                    onChange={handleChange}
+                                />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    required
+                                    id="descricao"
+                                    name="descricao"
+                                    label="Descricao"
+                                    fullWidth
+                                    onChange={handleChange}
+                                />
+                            </Grid>
                         </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                id="sobrenome"
-                                name="sobrenome"
-                                label="Sobrenome"
-                                fullWidth
-                                autoComplete="lname"
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                required
-                                id="descricao"
-                                name="descricao"
-                                label="Descricao"
-                                fullWidth
-                            />
-                        </Grid>
-                    </Grid>
-                    <div className={classes.buttons}>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => {}}
-                            className={classes.button}>
-                            Ok
+                        <div className={classes.buttons}>
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                                onClick={() => { }}
+                                className={classes.button}>
+                                Ok
                         </Button>
-                    </div>
+                        </div>
+                    </form>
                 </Paper>
             </main>
         </>

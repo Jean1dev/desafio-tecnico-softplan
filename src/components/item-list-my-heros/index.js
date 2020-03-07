@@ -9,6 +9,8 @@ import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import { makeStyles } from '@material-ui/core/styles'
+import { useDispatch } from 'react-redux'
+import { _removeHero } from '../../store/modules/heros/actions'
 
 const useStyles = makeStyles(theme => ({
     inline: {
@@ -20,16 +22,21 @@ const useStyles = makeStyles(theme => ({
     },
 }))
 
-export default function ListMyHeros() {
+export default function ListMyHeros({ hero }) {
     const classes = useStyles()
+    const dispatch = useDispatch()
+
+    function remove() {
+        dispatch(_removeHero(hero))
+    }
 
     return (
         <ListItem className={classes.item}>
             <ListItemAvatar>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <Avatar alt={hero.nome} src={hero.nome.substring(0, 1)} />
             </ListItemAvatar>
             <ListItemText
-                primary="Brunch this weekend?"
+                primary={hero.nome}
                 secondary={
                     <>
                         <Typography
@@ -37,7 +44,7 @@ export default function ListMyHeros() {
                             variant="body2"
                             className={classes.inline}
                             color="textPrimary">
-                            Ali Connors
+                            {hero.descricao}
                                     </Typography>
                         {" "}
                     </>
@@ -45,7 +52,7 @@ export default function ListMyHeros() {
             />
             
             <ListItemSecondaryAction >
-                <IconButton edge="end" aria-label="delete">
+                <IconButton edge="end" aria-label="delete" onClick={remove}>
                     <DeleteIcon />
                 </IconButton>
 

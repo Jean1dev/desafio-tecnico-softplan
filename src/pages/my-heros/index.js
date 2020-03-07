@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Container } from './styles'
 import List from '@material-ui/core/List'
 import ListItem from '../../components/item-list-my-heros'
+import { useSelector } from 'react-redux'
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -24,12 +25,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function MyHeros() {
     const classes = useStyles()
+    const myHeros = useSelector(state => state._hero.list)
 
     return (
         <Container>
             <Paper className={classes.paper}>
                 <List className={classes.list}>
-                    <ListItem/>
+                    {myHeros.map(hero => (
+                        <ListItem key={hero.id} hero={hero}/>
+                    ))}
                 </List>
             </Paper>
         </Container>
