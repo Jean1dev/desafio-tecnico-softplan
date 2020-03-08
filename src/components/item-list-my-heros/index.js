@@ -52,7 +52,7 @@ export default function ListMyHeros({ hero }) {
             />
             
             <ListItemSecondaryAction >
-                <IconButton edge="end" aria-label="delete" onClick={remove}>
+                <IconButton data-testid="btnDelete" edge="end" aria-label="delete" onClick={remove}>
                     <DeleteIcon />
                 </IconButton>
 

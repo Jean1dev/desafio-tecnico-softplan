@@ -27,7 +27,7 @@ export default function SearchBar() {
                 placeholder="Buscar"
                 onChange={handleChange}
             />
-            <ButtonSearch onClick={search}>
+            <ButtonSearch data-testid="btnSearch" onClick={search}>
                 <SearchIcon></SearchIcon>
             </ButtonSearch>
         </>

@@ -1,68 +1,58 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## DESAFIO TÉCNICO SOFTPLAN
 
-In the project directory, you can run:
+### Funcionalidades esperadas:
 
-### `yarn start`
+ - Crie uma lista de cards para exibir os personagens mostrando a imagem e o nome;
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - Possibilite o usuário buscar personagens;
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  - Na lista o usuário pode ir para a página de detalhes do personagem e ver a lista de series dele;
 
-### `yarn test`
+  - Crie um formulário para editar um personagem Marvel (salvando apenas no client-side);
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### Restrições técnicas:
+  - Utilize o create-react-app como base;
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  - Utilize redux para gerenciar o estado;
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  - Utilize react-router para trocar de página;
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  - Utilize @testing-library/react para testes;
 
-### `yarn eject`
+### Diferencial:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  - Crie uma pipeline no GitLab; (Exemplo: build => test => deploy);
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - Substituir o redux pelo Local state management do Apollo Client (caso esteja utilizando a MarvelQL);
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Sobre o projeto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Para executar é necessario ter as credencias de MarvelAPI detalhes https://developer.marvel.com/docs#**
 
-## Learn More
+em src/services/api/api.js coloque suas credencias ( CHAVE_PUBLICA e CHAVE_PRIVADA)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Tecnologias utilizadas
+    "@material-ui/core"
+    "@material-ui/icons"
+    "@testing-library/jest-dom"
+    "@testing-library/react"
+    "@testing-library/user-event"
+    "axios"
+    "bootstrap"
+    "crypto-js"
+    "history"
+    "moment"
+    "react"
+    "react-bootstrap"
+    "react-dom"
+    "react-redux"
+    "react-router-dom"
+    "react-scripts"
+    "react-toastify"
+    "redux"
+    "redux-persist"
+    "redux-thunk"
+    "styled-components"

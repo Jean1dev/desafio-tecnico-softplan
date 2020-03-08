@@ -19,7 +19,7 @@ export default function ListSeries({ hero }) {
         }
 
         fetch()
-    }, [])
+    }, [hero.id])
 
     return (
         <>

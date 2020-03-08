@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import { Container, Content } from './styles'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone'
@@ -12,7 +12,11 @@ export default function header() {
             <Content>
                 <nav>
                     {/* <Link to="/"> */}
-                        <img data-testid="img" src="https://www.userlogos.org/files/logos/danger83/marvel.png" alt="Icone Massa"></img>
+                        <img 
+                            onClick={() => {history.replace('/')}}
+                            data-testid="img" 
+                            src="https://www.userlogos.org/files/logos/danger83/marvel.png" 
+                            alt="Icone Massa"></img>
                     {/* </Link> */}
                 </nav>
 

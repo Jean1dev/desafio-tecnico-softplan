@@ -18,6 +18,7 @@ export default (state = INITIAL_STATE, action) => {
 
         case '@hero/DELETE_HERO':
             return {
+                // eslint-disable-next-line
                 list: state.list.filter(i => i.id != action.payload)
             }
 

@@ -1,0 +1,37 @@
+image: node:latest
+
+stages:
+  - build
+  - test
+  - deploy_prod
+
+cache:
+  paths:
+    - node_modules/
+
+install_dependencies:
+  stage: build
+  script:
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - node_modules/
+      - build/
+
+run_tests:
+    stage: test
+    script:
+        - npm run test
+
+production:
+  stage: deploy_prod
+  image: ruby:latest
+  when: manual
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=jeannasoftplan2020 --api-key=$HEROKU_API_KEY --skip_cleanup
+  only:
+    - master

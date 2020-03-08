@@ -11,6 +11,7 @@ import AddAPhotoIcon from '@material-ui/icons/AddAPhoto'
 import { toast } from 'react-toastify'
 import { useDispatch } from 'react-redux'
 import { _saveHero } from '../../store/modules/heros/actions'
+import history from '../../services/history'
 import 'react-toastify/dist/ReactToastify.css'
 
 toast.configure()
@@ -65,6 +66,7 @@ export default function EditHero({ location }) {
     function submitForm() {
         dispatch(_saveHero(values))
         toast.success('Personagem alterado')
+        history.replace('my-heros')
     }
 
     return (
@@ -72,7 +74,7 @@ export default function EditHero({ location }) {
             <main className={classes.layout}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
-                        Editar personagem
+                        Editar personagem {hero.nome}
                     </Typography>
 
                     <div className={classes.avatarContainer}>
