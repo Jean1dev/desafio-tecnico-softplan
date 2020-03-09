@@ -70,7 +70,7 @@ export default function HeroCard({ hero }) {
       />
       <CardMedia
         className={classes.media}
-        image={`${hero.img}${getCredentialsString()}`}
+        image={hero.img}
         title={hero.nome}
       />
       <CardContent>
